@@ -27,7 +27,7 @@ export class List extends Component {
         (item: { name: string; url: string }) => `
           <li>
             <h3>${item.name.toUpperCase()}</h3>
-            <img width="170" heigth="150" class= "poke-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+            <img width="150" heigth="140" class= "poke-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
               item.url.split('/')[6]
             }.gif" >
           </li>`
