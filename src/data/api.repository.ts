@@ -6,6 +6,7 @@ export class ApiRepository {
 
   async getAll() {
     const response = await fetch(this.url);
-    return response.json();
+    const pokemonList = await response.json();
+    return pokemonList.results;
   }
 }
