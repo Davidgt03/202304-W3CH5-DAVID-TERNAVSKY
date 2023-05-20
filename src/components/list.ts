@@ -6,12 +6,14 @@ export class List extends Component {
   // eslint-disable-next-line no-unused-vars
   pokemons: PokemonStructure[];
   repo: ApiRepository;
+  type: any;
   constructor(selector: string) {
     super(selector);
     this.pokemons = [];
     this.repo = new ApiRepository();
+    this.type = 'hola';
     this.handleLoad();
-    console.log(this.element);
+    this.handleLoadType();
   }
 
   async handleLoad() {
@@ -21,13 +23,20 @@ export class List extends Component {
     this.render();
   }
 
+  async handleLoadType() {
+    this.pokemons = await this.type.getAll();
+    this.template = this.createTemplate();
+    console.log(this.type);
+    this.render();
+  }
+
   createTemplate() {
     const list = this.pokemons
       .map(
         (item: { name: string; url: string }) => `
           <li>
             <h3>${item.name.toUpperCase()}</h3>
-            <img width="150" heigth="140" class= "poke-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+            <img width="100" heigth="100" class= "poke-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
               item.url.split('/')[6]
             }.gif" >
           </li>`
