@@ -18,11 +18,11 @@ export class List extends Component {
     this.pokemons = await this.repo.getAll();
     this.template = this.createTemplate();
     console.log(this.pokemons);
-    this.render('beforeend');
+    this.render();
   }
 
   createTemplate() {
-    const list = this.pokemons.results
+    const list = this.pokemons
       .map(
         (item: { name: string; url: string }) => `
           <li>
