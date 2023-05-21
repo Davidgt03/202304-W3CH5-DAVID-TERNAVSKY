@@ -11,22 +11,13 @@ export class List extends Component {
     super(selector);
     this.pokemons = [];
     this.repo = new ApiRepository();
-    this.type = 'hola';
     this.handleLoad();
-    this.handleLoadType();
   }
 
   async handleLoad() {
     this.pokemons = await this.repo.getAll();
     this.template = this.createTemplate();
     console.log(this.pokemons);
-    this.render();
-  }
-
-  async handleLoadType() {
-    this.pokemons = await this.type.getAll();
-    this.template = this.createTemplate();
-    console.log(this.type);
     this.render();
   }
 
