@@ -16,6 +16,12 @@ li {
   width: 252px;
   height: 249px;
 }
+img {
+  border-radius: 20%;
+}
+h4 {
+  background-color: lightblue;
+}
 .poke-image {
   padding: 1rem;
   margin: 2.5rem;
