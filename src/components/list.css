@@ -100,10 +100,15 @@ ul li {
 }
 
 @media (max-width: 600px) {
+  html {
+    display: flex;
+    flex-direction: column;
+  }
+
   li {
     display: flex;
     flex-direction: column;
-    margin-left: 36px;
+
     width: 300px;
     align-items: center;
   }
