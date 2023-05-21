@@ -1,22 +1,20 @@
 export class ApiRepository {
   url: string;
-  urlType: string;
   constructor() {
     this.url = 'https://pokeapi.co/api/v2/pokemon/';
-    this.urlType = 'https://pokeapi.co/api/v2/type/';
   }
 
   async getAll() {
     const response = await fetch(this.url);
-
     const pokemonList = await response.json();
-    return pokemonList.results;
-  }
-
-  async getAllTypes() {
-    const responseType = await fetch(this.urlType);
-
-    const pokemonType = await responseType.json();
-    return pokemonType.results;
+    const pokemonInfo = await Promise.all(
+      pokemonList.results.map(async (pokemon: { url: string }) => {
+        const singlePokemonUrl = pokemon.url;
+        const response = await fetch(singlePokemonUrl);
+        const pokemonData = await response.json();
+        return pokemonData;
+      })
+    );
+    return pokemonInfo;
   }
 }
